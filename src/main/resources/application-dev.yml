@@ -1,0 +1,137 @@
+server:
+  servlet:
+    context-path: /api/v1/
+  port: 8081
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    url: jdbc:h2:mem:school_service_app_db
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+#    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+mailer:
+  host: smtp.mailtrap.io
+  port: 465
+  username: d63a0fc176b2b9
+  password: c1f66e02e77be6
+  protocol: smtp
+  auth: true
+  starttls: true
+  debug: true
+  from: emmatblingx@gmail.com
+jwt:
+  secret: "Jx2KkiWszbIABA2ey3U1UBx4Fk09iLM4hJmOqSi73JAJygmzi9Utu2HbldCWT247FlDtt5xl5i0BEfcD39AhDQ"
+api:
+  auth:
+    login:
+      description: Login as a user
+      notes: |
+        # Normal Response
+        If your credentials is valid, you would get a token to which you can further authenticate your requests
+        # Error Response
+        If for some reason your credentials is not valid, you would get a response detailing why
+    register:
+      description: Register as a user
+      notes: |
+        # Normal Response
+        If your payload is valid, a user would be created
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    verify:
+      description: Verify a user after registration
+      notes: |
+        # Normal Response
+        If your verification token is valid, a user would be validated
+        # Error Response
+        If for some reason your verification token is not valid, you would get a response detailing why
+    update-credentials:
+      description: Update a user credentials
+      notes: |
+        # Normal Response
+        If your payload is valid,  your user credential would be updated successfully
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    assign-admin-role-to-user:
+      description: Assign an admin role to a user by super admin
+      notes: |
+        # Only Super Admins Are Authorised To Use This Endpoint
+        # Normal Response
+        If your payload is valid, the given user would be made an admin
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    assign-role-to-user:
+      description: Assign a role to a user
+      notes: |
+        # Normal Response
+        If your payload is valid, the given user role would be changed successfully
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    add-teacher-to-school:
+      description: Add teacher to your school
+      notes: |
+        # Normal Response
+        If your payload is valid, a user would be created
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    remove-teacher-from-school:
+      description: Remove teacher from your school
+      notes: |
+        # Normal Response
+        If your payload is valid, a user would be created
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    add-student-to-class:
+      description: Add student to a class
+      notes: |
+        # Only Authorised Teachers Can Perform This Operation
+        # Normal Response
+        If your payload is valid, a student would be added to the class successfully
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    remove-student-from-class:
+      description: Remove student from a class
+      notes: |
+        # Only Authorised Teachers Can Perform This Operation
+        # Normal Response
+        If your payload is valid, a student would be removed from the class successfully
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    get-all-school-classes:
+      description: Get all your school classes
+      notes: |
+        # Normal Response
+        If your payload is valid, All your school classes would be returned
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    get-all-roles:
+      description: Get all roles
+      notes: |
+        # Normal Response
+        If your payload is valid, All roles would be returned
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
+    get-all-schools:
+      description: Get all schools
+      notes: |
+        # Normal Response
+        If your payload is valid, All schools would be returned
+        # Error Response
+        If for some reason your payload is not valid, you would get a response detailing why
